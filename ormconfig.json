@@ -1,0 +1,21 @@
+{
+  "type": "postgres",
+  "host": "127.0.0.1",
+  "port": 5432,
+  "username": "postgres",
+  "password": "postgres2023",
+  "database": "dbtravels",
+  "entities": [
+    null,
+    null,
+    null,
+    null
+  ],
+  "migrationsTableName": "migration",
+  "migrations": [
+    "C:\\Users\\Ultra\\Desktop\\TRABAJO\\WOMPI\\wompi-back-end\\src\\config\\config/src/migration/*.ts"
+  ],
+  "ssl": false,
+  "synchronize": true,
+  "autoLoadEntities": true
+}
