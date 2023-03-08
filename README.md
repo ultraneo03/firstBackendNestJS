@@ -69,7 +69,7 @@ you may access to Swagger to realize test in the configured local 'URL'/api, for
 
 the seed file must first be run in the database in order to proceed with the tests
 
-the seed file is located in the seed folder
+the seed file is located in the sql/ folder
 
 you can login with a rider user with username and password in endpoint http://localhost:3000/rider/rider?username=USERNAME&password=PASSWORD
 
