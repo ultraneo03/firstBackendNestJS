@@ -24,12 +24,28 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Nest](https://github.com/nestjs/nest) this is my first NestJS Application.
 
 ## Installation
 
 ```bash
 $ yarn install
+```
+
+## configuration
+
+You must configure the .env environment file with the information for connecting to the postgres database
+
+## CreateDatabase
+
+```bash
+$ yarn run:start:db
+```
+
+## CreateMigration
+
+```bash
+$ yarn run typeorm migration:generate -- "FirstMigration" --dataSource src/config/config/config.service.ts
 ```
 
 ## Running the app
@@ -47,23 +63,98 @@ $ yarn run start:prod
 
 ## Test
 
-```bash
-# unit tests
-$ yarn run test
+you may access to Swagger to realize test in the configured local 'URL'/api, for example http://localhost:3000/api
 
-# e2e tests
-$ yarn run test:e2e
+## Process to Test
 
-# test coverage
-$ yarn run test:cov
-```
+the seed file must first be run in the database in order to proceed with the tests
+
+the seed file is located in the seed folder
+
+you can login with a rider user with username and password in endpoint http://localhost:3000/rider/rider?username=USERNAME&password=PASSWORD
+
+you can get all drivers in endpoint http://localhost:3000/driver/All
+
+you can get all drivers availables to realize a trip in endpoint http://localhost:3000/driver/Availables
+
+you can update the status driver availables to realize a trip in endpoint PUT http://localhost:3000/driver/Availables
+
+with the body
+{ 
+  "id": 1, //driver identification
+  "available": true, // is driver available
+  "isWorking": false, // driver is working in a travel
+  "longitude": "-74.20", // last longitude 
+  "latitude": "4.22" // last latitude
+}
+
+you can get a travel by id in endpoint http://localhost:3000/travel/ByID?travelId=1
+
+you can get a travel by rider id in endpoint http://localhost:3000/travel/ByRider?riderId=1
+
+you can get a travel by driver id in endpoint http://localhost:3000/travel/ByDriver?driverId=1
+
+you can get a travel availables for assing or be taken by a driver in endpoint http://localhost:3000/travel/Available
+
+you can create a travel request in the endpoint POST http://localhost:3000/travel
+
+with the body
+{
+  "riderId": 1,
+  "latitudeStart": "string",
+  "longitudeStart": "string",
+  "AddressStart": "string",
+  "latitudeEnd": "string",
+  "longitudeEnd": "string",
+  "AddressEnd": "string",
+  "status": 0
+}
+
+you can as a driver take a trip in the endpoint PUT http://localhost:3000/travel
+
+with the body
+
+{
+  "id": 2,
+  "driverId": 2,
+  "status": 0,
+  "finishDate": "2023-03-08T15:57:40.632Z",
+  "distanceTotal": "1",
+  "timeTotal": "1"
+}
+
+you can get a summary of the total value of the travel in the endpoint http://localhost:3000/travel/totalTravel?travelId=1
+
+
+You can create a payment request with communication to the wompi sandbox in the endpoint POST http://localhost:3000/payment
+
+with the body
+
+{
+  "subTotalTime": "5000",
+  "subTotalDistance": "5600",
+  "tax": "3500",
+  "total": "14100",
+  "status": 0,
+  "travelId": 1
+}
+
+and finally you can Update a payment request with verification of transaction id in wompi sandbox in the enpoint PUT http://localhost:3000/payment
+
+with the body
+{
+  "id": 7,
+  "status": 2,
+  "finishDate": "2023-03-08T15:04:43.369Z",
+  "infoTransaction": "137690-1678287667-81098"
+}
 
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
 ## Stay in touch
-
+- Author - [Efrain Melo](https://www.linkedin.com/in/efrain-melo-6347642b/)
 - Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
 - Website - [https://nestjs.com](https://nestjs.com/)
 - Twitter - [@nestframework](https://twitter.com/nestframework)
