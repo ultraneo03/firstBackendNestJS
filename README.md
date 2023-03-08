@@ -80,6 +80,7 @@ you can get all drivers availables to realize a trip in endpoint http://localhos
 you can update the status driver availables to realize a trip in endpoint PUT http://localhost:3000/driver/Availables
 
 with the body
+```bash
 { 
   "id": 1, //driver identification
   "available": true, // is driver available
@@ -87,6 +88,7 @@ with the body
   "longitude": "-74.20", // last longitude 
   "latitude": "4.22" // last latitude
 }
+```
 
 you can get a travel by id in endpoint http://localhost:3000/travel/ByID?travelId=1
 
@@ -99,6 +101,7 @@ you can get a travel availables for assing or be taken by a driver in endpoint h
 you can create a travel request in the endpoint POST http://localhost:3000/travel
 
 with the body
+```bash
 {
   "riderId": 1,
   "latitudeStart": "string",
@@ -109,11 +112,11 @@ with the body
   "AddressEnd": "string",
   "status": 0
 }
-
+```
 you can as a driver take a trip in the endpoint PUT http://localhost:3000/travel
 
 with the body
-
+```bash
 {
   "id": 2,
   "driverId": 2,
@@ -122,14 +125,14 @@ with the body
   "distanceTotal": "1",
   "timeTotal": "1"
 }
-
+```
 you can get a summary of the total value of the travel in the endpoint http://localhost:3000/travel/totalTravel?travelId=1
 
 
 You can create a payment request with communication to the wompi sandbox in the endpoint POST http://localhost:3000/payment
 
 with the body
-
+```bash
 {
   "subTotalTime": "5000",
   "subTotalDistance": "5600",
@@ -138,16 +141,19 @@ with the body
   "status": 0,
   "travelId": 1
 }
+```
 
 and finally you can Update a payment request with verification of transaction id in wompi sandbox in the enpoint PUT http://localhost:3000/payment
 
-with the body
+with the body:
+```bash
 {
   "id": 7,
   "status": 2,
   "finishDate": "2023-03-08T15:04:43.369Z",
   "infoTransaction": "137690-1678287667-81098"
 }
+```
 
 ## Support
 
